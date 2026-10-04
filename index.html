@@ -3,694 +3,873 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>欢迎页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寻找伪人 · 开场</title>
 <style>
-/* ============================================================
-   全局重置（合并，只此一份）
-   ============================================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: "KaiTi", "STKaiti", "楷体", "Kaiti SC", "Microsoft YaHei", serif;
-    background: transparent;
-    padding: 0;
-    width: 100%;
+  font-family: "KaiTi", "STKaiti", "楷体", "Kaiti SC", "Microsoft YaHei", serif;
+  background: #020406;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
 /* ============================================================
-   一、欢迎页外框：黑底 + 上下黑边 + 撑高
-   ============================================================ */
-
+  视图一：欢迎页
+============================================================ */
 .welcome-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 64px 0;
-    min-height: 680px;
-    background: #04070a;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    container-type: inline-size;
-    transition: opacity .9s ease, transform .9s ease, max-height .9s ease .3s, margin .9s ease .3s;
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 64px 0;
+  background: #04070a;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  container-type: inline-size;
+  transition: opacity .9s ease, transform .9s ease, max-height .9s ease .3s, margin .9s ease .3s;
 }
-
 .welcome-wrap.hide {
-    opacity: 0;
-    transform: scale(1.04);
-    pointer-events: none;
-    max-height: 0;
-    margin: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
-/* 16:9 的底图区 */
 .welcome-stage {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 8px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
 }
-
-/* 上下渐变条：让底图自然没入黑边 */
 .welcome-stage::before,
 .welcome-stage::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 56px;
-    z-index: 2;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 56px;
+  z-index: 2;
+  pointer-events: none;
 }
 .welcome-stage::before {
-    top: 0;
-    background: linear-gradient(to bottom, #04070a 0%, rgba(4,7,10,.65) 42%, rgba(4,7,10,0) 100%);
+  top: 0;
+  background: linear-gradient(to bottom, #04070a 0%, rgba(4,7,10,.65) 42%, rgba(4,7,10,0) 100%);
 }
 .welcome-stage::after {
-    bottom: 0;
-    background: linear-gradient(to top, #04070a 0%, rgba(4,7,10,.65) 42%, rgba(4,7,10,0) 100%);
+  bottom: 0;
+  background: linear-gradient(to top, #04070a 0%, rgba(4,7,10,.65) 42%, rgba(4,7,10,0) 100%);
 }
-
 .welcome-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url("https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxjmrBLmDl9C8OxXmSkBpmKIIW9q9pAALrJAAC7lYIVrkkSb1ttVxEPQQ.jpg");
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
+  position: absolute;
+  inset: 0;
+  background-image: url("https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxjmrBLmDl9C8OxXmSkBpmKIIW9q9pAALrJAAC7lYIVrkkSb1ttVxEPQQ.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
-
 .welcome-mask {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-        linear-gradient(to right, rgba(3,6,9,.72) 0%, rgba(3,6,9,.15) 30%, rgba(3,6,9,.10) 60%, rgba(3,6,9,.55) 100%),
-        radial-gradient(circle at 50% 45%, transparent 30%, rgba(3,6,9,.62) 100%);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to right, rgba(3,6,9,.72) 0%, rgba(3,6,9,.15) 30%, rgba(3,6,9,.10) 60%, rgba(3,6,9,.55) 100%),
+    radial-gradient(circle at 50% 45%, transparent 30%, rgba(3,6,9,.62) 100%);
 }
-
 .welcome-inner {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
-    padding: 18px clamp(16px, 4%, 40px);
-    color: #e8e6df;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  padding: 18px clamp(16px, 4%, 40px);
+  color: #e8e6df;
+  pointer-events: none;
 }
-
-/* 左侧：竖排闪烁标题 */
+/* 标题字体：荧光绿 */
 .welcome-title-v {
-    position: absolute;
-    left: clamp(52px, 15%, 120px);
-    top: 12%;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-size: clamp(26px, 6.2vw, 46px);
-    line-height: 1.05;
-    letter-spacing: .16em;
-    font-weight: 700;
-    color: #5fe6e6;
-    text-shadow: 0 0 6px rgba(95,230,230,.85), 0 0 18px rgba(95,230,230,.55), 0 0 34px rgba(95,230,230,.28);
-    animation: cyanBlink 2.6s ease-in-out infinite;
-    user-select: none;
+  position: absolute;
+  left: clamp(52px, 15%, 120px);
+  top: 12%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: clamp(26px, 6.2vw, 46px);
+  line-height: 1.05;
+  letter-spacing: .16em;
+  font-weight: 700;
+  color: #4aff7d;
+  text-shadow: 0 0 6px rgba(74,255,125,.9), 0 0 18px rgba(57,255,106,.6), 0 0 34px rgba(57,255,106,.35);
+  animation: greenBlink 2.6s ease-in-out infinite;
+  user-select: none;
+}
+@keyframes greenBlink {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(74,255,125,.95), 0 0 18px rgba(57,255,106,.65), 0 0 34px rgba(57,255,106,.35);
+  }
+  50% {
+    opacity: .62;
+    text-shadow: 0 0 3px rgba(74,255,125,.55), 0 0 9px rgba(57,255,106,.35), 0 0 16px rgba(57,255,106,.16);
+  }
 }
 
-@keyframes cyanBlink {
-    0%, 100% {
-        opacity: 1;
-        text-shadow: 0 0 6px rgba(95,230,230,.9), 0 0 18px rgba(95,230,230,.6), 0 0 34px rgba(95,230,230,.3);
-    }
-    50% {
-        opacity: .62;
-        text-shadow: 0 0 3px rgba(95,230,230,.5), 0 0 9px rgba(95,230,230,.3), 0 0 16px rgba(95,230,230,.14);
-    }
-}
-
-/* 最右侧：角色预览 呼吸圆（大） */
+/* 角色预览：荧光绿光圈 */
 .btn-preview {
-    position: absolute;
-    right: clamp(12px, 3%, 30px);
-    top: 50%;
-    transform: translateY(-50%);
-    width: clamp(96px, 17vw, 148px);
-    height: clamp(96px, 17vw, 148px);
-    border-radius: 50%;
-    background: rgba(28,8,8,.55);
-    border: 1.5px solid rgba(255,95,95,.8);
-    color: #ffeaea;
-    font-family: inherit;
-    font-size: clamp(15px, 2.6vw, 21px);
-    line-height: 1.2;
-    letter-spacing: .12em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    opacity: .5;
-    animation: breathRedStrong 2.4s ease-in-out infinite;
-    transition: transform .22s ease, filter .22s ease, opacity .22s ease;
-    z-index: 3;
+  position: absolute;
+  right: clamp(12px, 3%, 30px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(96px, 17vw, 148px);
+  height: clamp(96px, 17vw, 148px);
+  border-radius: 50%;
+  background: rgba(8,28,14,.55);
+  border: 1.5px solid rgba(74,255,125,.8);
+  color: #e6ffee;
+  font-family: inherit;
+  font-size: clamp(15px, 2.6vw, 21px);
+  line-height: 1.2;
+  letter-spacing: .12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  opacity: .5;
+  animation: breathGreenStrong 2.4s ease-in-out infinite;
+  transition: transform .22s ease, filter .22s ease, opacity .22s ease;
+  z-index: 6;
+  pointer-events: auto;
 }
 .btn-preview:hover {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.05);
-    filter: brightness(1.1);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+  filter: brightness(1.1);
 }
 .btn-preview .label {
-    opacity: 0;
-    transition: opacity .25s ease;
+  opacity: 0;
+  transition: opacity .25s ease;
 }
-.btn-preview:hover .label {
-    opacity: 1;
-}
+.btn-preview:hover .label { opacity: 1; }
 
-/* 水平居中 · 从下往上 2/5 处 · 再下移图片宽 1/7：开始游戏（小） */
+/* 开始游戏：荧光绿光圈 */
 .btn-start {
-    position: absolute;
-    left: 50%;
-    bottom: 40%;
-    /* 兜底位移：容器最大宽 1500 / 7 ≈ 214px */
-    transform: translateX(-50%) translateY(214px);
-    width: clamp(69px, 12.75vw, 99px);
-    height: clamp(69px, 12.75vw, 99px);
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 42%, rgba(64,20,20,.55), rgba(18,6,6,.72));
-    border: 1.5px solid rgba(255,120,120,.85);
-    color: #ffeaea;
-    font-family: inherit;
-    font-size: clamp(13px, 2.4vw, 17px);
-    line-height: 1.2;
-    letter-spacing: .08em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    opacity: .5;
-    animation: breathRedStrong 2.2s ease-in-out infinite;
-    transition: transform .22s ease, filter .22s ease, opacity .22s ease;
-    z-index: 3;
+  position: absolute;
+  left: 50%;
+  bottom: 40%;
+  transform: translateX(-50%) translateY(214px);
+  width: clamp(69px, 12.75vw, 99px);
+  height: clamp(69px, 12.75vw, 99px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, rgba(20,64,32,.55), rgba(6,18,10,.72));
+  border: 1.5px solid rgba(74,255,125,.85);
+  color: #e6ffee;
+  font-family: inherit;
+  font-size: clamp(13px, 2.4vw, 17px);
+  line-height: 1.2;
+  letter-spacing: .08em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  opacity: .5;
+  animation: breathGreenStrong 2.2s ease-in-out infinite;
+  transition: transform .22s ease, filter .22s ease, opacity .22s ease;
+  z-index: 6;
+  pointer-events: auto;
 }
 @supports (width: 1cqw) {
-    .btn-start {
-        transform: translateX(-50%) translateY(14.2857cqw);
-    }
-    .btn-start:hover {
-        transform: translateX(-50%) translateY(14.2857cqw) scale(1.06);
-    }
+  .btn-start {
+    transform: translateX(-50%) translateY(14.2857cqw);
+  }
+  .btn-start:hover {
+    transform: translateX(-50%) translateY(14.2857cqw) scale(1.06);
+  }
 }
 .btn-start:hover {
-    opacity: 1;
-    filter: brightness(1.12);
+  opacity: 1;
+  filter: brightness(1.12);
 }
-.btn-start:active {
-    filter: brightness(.95);
-}
+.btn-start:active { filter: brightness(.95); }
 .btn-start .label {
-    opacity: 0;
-    transition: opacity .25s ease;
+  opacity: 0;
+  transition: opacity .25s ease;
 }
-.btn-start:hover .label {
-    opacity: 1;
-}
+.btn-start:hover .label { opacity: 1; }
 
-/* 红色呼吸光晕（共用） */
-@keyframes breathRedStrong {
-    0%, 100% {
-        box-shadow: 0 0 10px rgba(255,95,95,.55), 0 0 26px rgba(255,79,79,.30), 0 0 0 0 rgba(255,95,95,.30);
-        border-color: rgba(255,95,95,.75);
-    }
-    50% {
-        box-shadow: 0 0 22px rgba(255,130,130,.85), 0 0 48px rgba(255,79,79,.55), 0 0 0 0 14px rgba(255,95,95,.03);
-        border-color: rgba(255,170,170,1);
-    }
+/* 荧光绿呼吸光晕（两个光圈共用） */
+@keyframes breathGreenStrong {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(74,255,125,.55), 0 0 26px rgba(57,255,106,.32), 0 0 0 0 rgba(57,255,106,.30);
+    border-color: rgba(74,255,125,.75);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(120,255,165,.85), 0 0 48px rgba(57,255,106,.55), 0 0 0 14px rgba(57,255,106,.04);
+    border-color: rgba(180,255,205,1);
+  }
 }
 
 /* ============================================================
-   二、角色预览弹层
-   ============================================================ */
-
+  角色预览弹层
+============================================================ */
 .pp-modal {
-    position: absolute;
-    inset: 0;
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.62);
-    padding: 12px;
-    overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.62);
+  padding: 12px;
+  overflow: hidden;
 }
-.pp-modal.show {
-    display: flex;
-}
-
+.pp-modal.show { display: flex; }
 .pp-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 340px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(20, 20, 22, 0.96);
-    flex: 0 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(20, 20, 22, 0.96);
+  flex: 0 0 auto;
 }
-
-/* 退出按钮：flex 双向居中，✕ 对准圆心 */
 .pp-close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 10;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
-    color: #ddd;
-    font-size: 15px;
-    line-height: 1;
-    cursor: pointer;
-    user-select: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
 }
 .pp-close:hover {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
 }
-
 .pp-stage {
-    display: grid;
-    grid-template-columns: 1fr;
-    position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
 }
 .pp-content,
-.pp-glitch {
-    grid-area: 1 / 1;
-}
-
+.pp-glitch { grid-area: 1 / 1; }
 .pp-imgbox {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    overflow: hidden;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  overflow: hidden;
 }
 .pp-imgbox img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
 .pp-name {
-    padding: 14px 16px;
-    text-align: center;
-    font-size: 17px;
-    letter-spacing: 0.14em;
-    color: #e8e8e8;
-    word-break: break-all;
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: #e8e8e8;
+  word-break: break-all;
 }
-
 .pp-glitch {
-    pointer-events: none;
-    opacity: 0;
+  pointer-events: none;
+  opacity: 0;
 }
 .pp-glitch::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.16) 0px,
-            rgba(255, 255, 255, 0.16) 1px,
-            transparent 1px,
-            transparent 3px
-        );
-    mix-blend-mode: screen;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.16) 0px, rgba(255,255,255,0.16) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: screen;
 }
 .pp-glitch::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin-top: -100%;
-    background-image: linear-gradient(
-        90deg,
-        rgba(255, 0, 60, 0.28) 0%,
-        transparent 18%,
-        rgba(0, 200, 255, 0.24) 42%,
-        transparent 60%,
-        rgba(255, 255, 255, 0.18) 82%,
-        transparent 100%
-    );
-    mix-blend-mode: screen;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-top: -100%;
+  background-image: linear-gradient(90deg, rgba(255,0,60,0.28) 0%, transparent 18%, rgba(0,200,255,0.24) 42%, transparent 60%, rgba(255,255,255,0.18) 82%, transparent 100%);
+  mix-blend-mode: screen;
 }
-
-.fx-switch .pp-content {
-    animation: ppBlurOut 0.46s steps(3, end) forwards;
-}
-.fx-switch .pp-glitch {
-    animation: ppGlitch 0.46s steps(1, end) forwards;
-}
-.fx-boot .pp-content {
-    animation: ppBoot 0.5s steps(4, end) forwards;
-}
-
-@keyframes ppBlurOut {
-    0% { filter: blur(0px) brightness(1); opacity: 1; transform: translateX(0); }
-    55% { filter: blur(2.5px) brightness(0.7); opacity: 0.75; transform: translateX(2px); }
-    100% { filter: blur(6px) brightness(0.2); opacity: 0.35; transform: translateX(-3px); }
-}
-@keyframes ppGlitch {
-    0% { opacity: 0; transform: translateX(0); }
-    18% { opacity: 1; transform: translateX(3px); }
-    28% { opacity: 0.35; transform: translateX(-5px); }
-    36% { opacity: 1; transform: translateX(4px); }
-    46% { opacity: 0.2; transform: translateX(-2px); }
-    56% { opacity: 1; transform: translateX(2px); }
-    66% { opacity: 0.9; transform: translateX(-4px); }
-    76% { opacity: 0.1; transform: translateX(1px); }
-    100% { opacity: 0; transform: translateX(0); }
-}
-@keyframes ppBoot {
-    0% { filter: brightness(0); opacity: 0; }
-    30% { filter: brightness(0.25); opacity: 1; }
-    45% { filter: brightness(1.5); opacity: 1; }
-    58% { filter: brightness(0.15); opacity: 1; }
-    72% { filter: brightness(1.25); opacity: 1; }
-    100% { filter: brightness(1); opacity: 1; }
-}
-
+.fx-switch .pp-content { animation: ppBlurOut 0.46s steps(3, end) forwards; }
+.fx-switch .pp-glitch { animation: ppGlitch 0.46s steps(1, end) forwards; }
+.fx-boot .pp-content { animation: ppBoot 0.5s steps(4, end) forwards; }
 .pp-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 0 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 16px 16px;
 }
 .pp-btn {
-    flex: 0 0 auto;
-    padding: 7px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #ddd;
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    user-select: none;
+  flex: 0 0 auto;
+  padding: 7px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ddd;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  user-select: none;
 }
-.pp-btn:hover {
-    background: rgba(255, 255, 255, 0.14);
-}
+.pp-btn:hover { background: rgba(255, 255, 255, 0.14); }
 .pp-page {
-    min-width: 52px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 13px;
-    letter-spacing: 0.08em;
+  min-width: 52px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  letter-spacing: 0.08em;
 }
-.loading {
-    text-align: center;
-    padding: 20px;
-    color: #999;
+@keyframes ppBlurOut {
+  0% { filter: blur(0px) brightness(1); opacity: 1; transform: translateX(0); }
+  55% { filter: blur(2.5px) brightness(0.7); opacity: 0.75; transform: translateX(2px); }
+  100% { filter: blur(6px) brightness(0.2); opacity: 0.35; transform: translateX(-3px); }
 }
+@keyframes ppGlitch {
+  0% { opacity: 0; transform: translateX(0); }
+  18% { opacity: 1; transform: translateX(3px); }
+  28% { opacity: 0.35; transform: translateX(-5px); }
+  36% { opacity: 1; transform: translateX(4px); }
+  46% { opacity: 0.2; transform: translateX(-2px); }
+  56% { opacity: 1; transform: translateX(2px); }
+  66% { opacity: 0.9; transform: translateX(-4px); }
+  76% { opacity: 0.1; transform: translateX(1px); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+@keyframes ppBoot {
+  0% { filter: brightness(0); opacity: 0; }
+  30% { filter: brightness(0.25); opacity: 1; }
+  45% { filter: brightness(1.5); opacity: 1; }
+  58% { filter: brightness(0.15); opacity: 1; }
+  72% { filter: brightness(1.25); opacity: 1; }
+  100% { filter: brightness(1); opacity: 1; }
+}
+
+/* ============================================================
+  视图二：正文页（开场白）
+============================================================ */
+.story-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 56px 0 72px;
+  background: #04070a;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1;
+  transition: opacity .9s ease, transform .9s ease, max-height .9s ease .3s, margin .9s ease .3s;
+}
+.story-wrap.hide {
+  opacity: 0;
+  transform: scale(.98);
+  pointer-events: none;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.story-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 clamp(18px, 5%, 40px);
+  color: #d8d4c8;
+}
+.story-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(95,230,230,.22);
+}
+.story-top .k-title {
+  font-size: clamp(15px, 3.2vw, 19px);
+  letter-spacing: .28em;
+  color: #5fe6e6;
+  text-shadow: 0 0 6px rgba(95,230,230,.55), 0 0 16px rgba(95,230,230,.28);
+  user-select: none;
+}
+.btn-return {
+  padding: 6px 16px;
+  border: 1px solid rgba(255,120,120,.55);
+  border-radius: 999px;
+  background: rgba(40,10,10,.42);
+  color: #ffdada;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: .1em;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn-return:hover {
+  background: rgba(64,20,20,.7);
+  border-color: rgba(255,150,150,.9);
+  color: #fff;
+}
+.story-body {
+  font-size: clamp(15px, 3vw, 17px);
+  line-height: 2;
+  letter-spacing: .03em;
+  text-align: left;
+}
+.story-body p {
+  margin: 0 0 18px;
+  text-indent: 2em;
+  color: #d8d4c8;
+}
+.story-body p:last-child { margin-bottom: 0; }
+
+/* ---- 信纸（原样保留） ---- */
+.story-body .letter{
+  box-sizing:border-box;width:100%;max-width:720px;margin:26px auto;padding:34px 34px 30px 56px;
+  color:#3b2b1c !important;
+  font-family:'Long Cang','Ma Shan Zheng','LXGW WenKai','STXingkai','Kaiti SC','STKaiti','KaiTi',serif;
+  font-size:19px;line-height:32px;letter-spacing:.03em;text-align:left;
+  background-color:#f7f0d8;
+  background-image:radial-gradient(ellipse 64px 46px at 87% 9%,rgba(122,12,12,.55) 0 46%,rgba(104,10,10,.28) 62%,transparent 82%),radial-gradient(ellipse 70px 50px at 87% 9%,transparent 0 52%,rgba(86,6,6,.34) 64%,rgba(86,6,6,.10) 74%,transparent 84%),radial-gradient(ellipse 34px 22px at 78% 13%,rgba(122,12,12,.42) 0 44%,transparent 78%),radial-gradient(ellipse 20px 12px at 93% 15%,rgba(122,12,12,.38) 0 44%,transparent 80%),radial-gradient(ellipse 3px 30px at 82% 17%,rgba(126,14,14,.48) 0 40%,rgba(126,14,14,.18) 72%,transparent 94%),radial-gradient(circle at 70% 5%,rgba(112,10,10,.55) 0 6px,transparent 13px),radial-gradient(circle at 93% 21%,rgba(112,10,10,.52) 0 5px,transparent 11px),radial-gradient(circle at 66% 12%,rgba(112,10,10,.45) 0 3px,transparent 8px),radial-gradient(circle at 97% 16%,rgba(112,10,10,.50) 0 2px,transparent 6px),radial-gradient(circle at 74% 30%,rgba(112,10,10,.40) 0 2px,transparent 6px),radial-gradient(ellipse 92px 42px at 12% 80%,rgba(118,20,20,.30) 0 40%,transparent 74%),radial-gradient(circle at 22% 86%,rgba(118,20,20,.38) 0 5px,transparent 12px),linear-gradient(90deg,transparent 0 46px,rgba(178,70,70,.72) 46px 48px,transparent 48px),repeating-linear-gradient(to bottom,transparent 0 30px,rgba(118,128,150,.20) 30px 31px,transparent 31px 32px),linear-gradient(180deg,#fbf5e2 0%,#f7f0d8 55%,#eee3c6 100%);
+  clip-path:polygon(0 1%,6% 0,12% 1.3%,19% .2%,25% 1.4%,31% .3%,37% 1.2%,44% .2%,50% 1.3%,56% .3%,62% 1.2%,69% .2%,75% 1.4%,81% .3%,87% 1.2%,94% .2%,100% 1%,100% 99%,94% 100%,87% 98.7%,81% 99.8%,75% 98.6%,69% 100%,62% 98.7%,56% 99.8%,50% 98.6%,44% 100%,37% 98.7%,31% 99.8%,25% 98.6%,19% 100%,12% 98.7%,6% 99.8%,0 99%);
+}
+.story-body .letter p{margin:0 0 10px;text-indent:2em;color:inherit}
+.story-body .letter p:last-child{margin-bottom:0}
+.story-body .letter .warn{color:#7c1c1c !important;font-weight:600}
+.story-body .letter .note{color:#5b4630 !important;font-size:.94em;margin:12px 0 8px}
+.story-body .letter q{color:inherit !important;quotes:none !important;font-style:normal}
+.story-body .letter q::before,.story-body .letter q::after{content:none !important}
+
+/* ============================================================
+  信纸下方的实体按钮
+  —— 四条等腰梯形：长边在外相互连接，短边朝里
+============================================================ */
+.btn-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 32px auto 0;
+  padding: 18px;
+  background: #0b0b0c;
+  border-radius: 2px;
+  box-shadow:
+    0 6px 0 #080808,
+    0 12px 22px rgba(0,0,0,.7);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.trap {
+  position: absolute;
+  z-index: 1;
+}
+.trap-top {
+  top: 0; left: 0;
+  width: 100%; height: 18px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 16px 100%);
+  background: linear-gradient(180deg, #8f9296 0%, #6e7175 55%, #55585c 100%);
+}
+.trap-bottom {
+  bottom: 0; left: 0;
+  width: 100%; height: 18px;
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #3a3c3f 0%, #232426 55%, #141415 100%);
+}
+.trap-left {
+  top: 0; left: 0;
+  width: 18px; height: 100%;
+  clip-path: polygon(0 0, 100% 16px, 100% calc(100% - 16px), 0 100%);
+  background: linear-gradient(90deg, #7d8084 0%, #606366 55%, #4a4d50 100%);
+}
+.trap-right {
+  top: 0; right: 0;
+  width: 18px; height: 100%;
+  clip-path: polygon(100% 0, 100% 100%, 0 calc(100% - 16px), 0 16px);
+  background: linear-gradient(90deg, #4b4e51 0%, #35373a 55%, #202123 100%);
+}
+
+.btn-round-start {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  padding: 20px 24px;
+  border: 0;
+  border-radius: 3px;
+  background-color: #34363a;
+  background-image: linear-gradient(180deg, #44474c 0%, #34363a 46%, #25272b 100%);
+  color: #7CFF9B;
+  font-family: "宋体", "SimSun", "华文中宋", "STSong", "黑体", "SimHei", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: .06em;
+  text-align: center;
+  text-shadow:
+    0 0 4px rgba(124,255,155,.95),
+    0 0 10px rgba(90,255,130,.75),
+    0 0 20px rgba(60,220,110,.55),
+    0 0 34px rgba(40,180,90,.35);
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.16),
+    inset 0 -3px 0 rgba(0,0,0,.7),
+    inset 0 0 0 1px rgba(0,0,0,.6);
+  transition: filter .12s ease, background-image .12s ease, text-shadow .12s ease;
+}
+.btn-round-start:hover {
+  filter: brightness(1.08);
+  background-image: linear-gradient(180deg, #52565c 0%, #3c3f44 46%, #2a2d31 100%);
+  text-shadow:
+    0 0 6px rgba(150,255,180,1),
+    0 0 14px rgba(110,255,150,.9),
+    0 0 26px rgba(70,230,120,.65),
+    0 0 44px rgba(40,190,95,.45);
+}
+.btn-round-start.done {
+  color: #4c7a5a;
+  text-shadow: 0 0 4px rgba(76,122,90,.5);
+  background-image: linear-gradient(180deg, #33352f 0%, #24261f 100%);
+  cursor: default;
+  pointer-events: none;
+}
+
+.btn-frame:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 #080808,
+    0 5px 10px rgba(0,0,0,.6);
+}
+.btn-frame.done {
+  filter: grayscale(.5) brightness(.72);
+  pointer-events: none;
+}
+.btn-frame.done .btn-round-start { pointer-events: none; }
 </style>
 </head>
 <body>
 
-<!-- ============ 欢迎页外框 ============ -->
-<div class="welcome-wrap" id="welcomeWrap">
-    <div class="welcome-stage">
-        <div class="welcome-bg"></div>
-        <div class="welcome-mask"></div>
+<!-- ============================================================
+     视图一：欢迎页
+============================================================ -->
+<div class="welcome-wrap" id="viewWelcome">
+  <div class="welcome-stage">
+    <div class="welcome-bg"></div>
+    <div class="welcome-mask"></div>
+    <div class="welcome-inner">
 
-        <div class="welcome-inner">
-            <div class="welcome-title-v" id="welcomeTitle">寻找伪人</div>
+      <div class="welcome-title-v">寻找伪人</div>
 
-            <button class="btn-preview" id="btnPreview">
-                <span class="label">角色预览</span>
-            </button>
-            <button class="btn-start" id="btnStart">
-                <span class="label">开始游戏</span>
-            </button>
+      <button class="btn-preview" id="btnPreview" type="button">
+        <span class="label">角色预览</span>
+      </button>
+
+      <button class="btn-start" id="btnStart" type="button">
+        <span class="label">开始游戏</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- 角色预览弹层 -->
+  <div class="pp-modal" id="ppModal">
+    <div class="pp-wrap">
+      <button class="pp-close" id="ppClose" type="button">✕</button>
+      <div class="pp-stage">
+        <div class="pp-content">
+          <div class="pp-imgbox" id="ppImgBox">暂无图片</div>
+          <div class="pp-name" id="ppName">——</div>
         </div>
+        <div class="pp-glitch"></div>
+      </div>
+      <div class="pp-nav">
+        <button class="pp-btn" id="ppPrev" type="button">◀ 上一页</button>
+        <span class="pp-page" id="ppPage">1 / 22</span>
+        <button class="pp-btn" id="ppNext" type="button">下一页 ▶</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     视图二：正文页（开场白，写死）
+============================================================ -->
+<div class="story-wrap hide" id="viewStory">
+  <div class="story-inner">
+    <div class="story-top">
+      <span class="k-title">第一天</span>
+      <button class="btn-return" id="btnReturn" type="button">返回首页</button>
+    </div>
+    <div class="story-body" id="storyBody">
+
+      <p>三天前，你收到一封无名信。</p>
+
+      <p>信封上压着一把短管老式燧发枪。信纸第一行用红色油墨写着今天这场日蚀开始的时间，以及异象出现的时刻。字迹潦草急促，像被人按在某个地方一口气写完。</p>
+
+      <p>起初，你只把这封信当作某种过火的恶作剧。</p>
+
+      <p>那三天里，窗户没封，枪也没碰。你只囤了五箱纯净水和十几罐午餐肉，想着就算信上说的全是假的，这些东西也不会浪费。</p>
+
+      <p>今天早上，日蚀如约出现。</p>
+
+      <p>太阳升起来，光扫到哪儿，哪儿的东西就开始变：几十年该走完的过程，几分钟里一次走完了。</p>
+
+      <p>最先变的是树冠：枝叶在光里干瘪、发黑、卷曲，像是被抽走了时间。地上的落叶先卷起边，随后干碎，一片片贴住路面。对面的居民楼接着垮，墙皮成片剥落，窗户后面的房间一个接一个暗下去。路边那几辆报废的车，漆面起泡翻起，车身在锈穿的地方塌下去，轮胎瘪成两摊；远处那排矮房的屋檐朝地面垂下来，瓦片成片滑落。太阳一直悬在原处，颜色越退越淡，把整条街照得发白。</p>
+
+      <p>街道上没有任何人再经过。那些前几天的脚步声、说话声、远处店铺的动静，全都消失了。</p>
+
+      <p>有一道光斑从窗缝里落在地板上，慢慢往回挪。你退到光斑外面，看着它爬过桌角，爬上窗台那盆早就不管的绿萝：叶子当场蔫下去，茎一节节软倒，贴住盆沿。</p>
+
+      <p>你伸手去够桌边那卷胶带的时候，手背从光斑边缘扫过去。</p>
+
+      <p>皮肤在几秒里失了弹性，颜色沉下去，细纹爬出来，像你忽然老了几岁。你把手缩回来，翻过来看了很久：那一小块皮肤已经不像自己的了。</p>
+
+      <p>你这才如梦初醒，又翻出那张被你当成玩笑的信，从头到尾仔细看了一遍。</p>
+
+      <div class="letter">
+        <p>白天不能见光。那种光会把时间从你身上抽走：先是疼，然后那块肉再也长不回来。屋里封死，一条缝都别留，等太阳落山。</p>
+        <p>能出门的只有傍晚那一小段。出去就把皮肤全遮上，手套、领口、袖口都收紧，算好回程，天黑之前必须回到屋里。真卡在外面过了夜，那一夜就是把命押上去了：找掩体、别让它们看见你、别点火。带上身的东西够不够，决定你还能不能看见第二天的太阳。</p>
+        <p>天黑之后门外会有人来。敲门的未必都是它们：活下来的人也会找到这里，求你收下他。他白天出不去，一个人在外头撑不过第二晚，他要留下来。进门之前先做好检查，放进来的人，往后要跟你住在一栋屋子里。</p>
+        <p>它们进不来。门关着的时候，它们只能站在门外叫，要进来得你答应。你的答应留给活人：看清了、查过了，就让他进来。屋里也别只剩你一个，一个人守不住一栋屋子，也撑不到最后。</p>
+        <p>可别贪，不要让它们在你屋里凑够两个。一个，勉强还能看得住；两个，就是你被吃掉的那天。</p>
+        <p class="warn">只有一个例外。那一个不用你答应，也不用你开门；他来了别装没听见，隔着门回他的话，别开门。</p>
+        <p class="warn">不管门外站着谁、问你什么，永远不要说你是自己一个人。永远不要！</p>
+        <p>收音机别关，早上留意 110.37。那是唯一还在说话的东西，听完再决定这一天怎么过。</p>
+        <p>最后一件。你手上那把枪不用寻常弹药：它认的是羁绊。当羁绊交织成结的那一刻，它会回应你，替你续上那份火力。余下的还有两发。</p>
+      </div>
+
+      <p>你把信纸翻到背面。</p>
+
+      <p>背面是一条完整的记录，字迹挤在一起，每一笔都压进纸里。下面还有一条，只写了一个开头，最后一个笔画拖得很长，断在纸边，没有继续。</p>
+
+      <p>这是目前唯一的线索。</p>
+
+      <p>矮桌底下那台老式收音机是你早年的爱好。你弯腰把它拖出来半尺，接上电源，把调频旋钮推到 110.37。喇叭里只有沙沙的白噪音，没有别的声音。你没有关。</p>
+
     </div>
 
-    <div class="pp-modal" id="pp-modal">
-        <div class="pp-wrap" id="pp-card">
-            <div class="loading">正在加载...</div>
-        </div>
+    <!-- 信纸下方：四条等腰梯形（长边在外连接、短边朝里）包边的实体按钮 -->
+    <div class="btn-frame" id="btnFrame">
+      <span class="trap trap-top"></span>
+      <span class="trap trap-bottom"></span>
+      <span class="trap trap-left"></span>
+      <span class="trap trap-right"></span>
+      <button class="btn-round-start" id="btnRoundStart" type="button">一边用家里的材料封窗，一边听广播，看看有什么有用的消息</button>
     </div>
+
+  </div>
 </div>
 
 <script>
 /* ============================================================
-   图片网址：按顺序对应下方的角色
-   ============================================================ */
-var ROLES = [
-    { name: "时崎狂三",      img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxiWrBHptfPQGIJwIsBW7bM8P-3tUaAAK4JAAC7lYIVlhd_xUVaFgiPQQ.jpg" },
-    { name: "泉新一",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcmrA8lvQzPUe1Inf4zGHh2AvkZPhAAINJAAC7lYIViRvlQehk0OPPQQ.jpg" },
-    { name: "鹿目圆",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxeWrA8mYesNjRFrc-jdd9VOzRhWYcAAIUJAAC7lYIVgABrtXZUlvl4T0E.jpg" },
-    { name: "晓美焰",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxdmrA8mIaeT7diJp7HB43JWhiH4xeAAIRJAAC7lYIVrmurp-ihkuwPQQ.jpg" },
-    { name: "啾啾",          img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxamrA8lFBCTEsvCWhG6uu-wViW8eOAAIFJAAC7lYIVrxiwxuy3dAAAT0E.jpg" },
-    { name: "涅普顿",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbmrA8lbMi7e_ehe1hkt8FEjwBD0gAAIJJAAC7lYIViy3zIPnXREfPQQ.jpg" },
-    { name: "布兰",          img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxaGrA8k-cARZNt78QY61IZLhwDXeoAAIDJAAC7lYIVjptFQgws1w3PQQ.jpg" },
-    { name: "贝露",          img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxZ2rA8k339ColDMwsmGVQrYVUlYcfAAICJAAC7lYIVv_bUlu_c_szPQQ.jpg" },
-    { name: "诺瓦露",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcGrA8lhnEvkizB44ILhvsSm4SrE2AAILJAAC7lYIVi4n21Pgtsz1PQQ.jpg" },
-    { name: "星野爱",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxZmrA8ku-1Ctq-wIYs_k5Lye6IyJlAAIBJAAC7lYIVpXYMMmqTtpdPQQ.jpg" },
-    { name: "苗木诚",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxa2rA8lIIAsYcxZAlPYJBGLfTnojaAAIGJAAC7lYIVvAW-ORZnpfpPQQ.jpg" },
-    { name: "常陆茉子",      img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxemrA9SRuxgL_45lgC3j4WOHJN1jJAAIlJAAC7lYIVrAAAckyTAmrBj0E.jpg" },
-    { name: "明月栞那",      img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbWrA8lUP6xD5_onkY6VDb27_wCJ1AAIIJAAC7lYIVub8da_2T9vtPQQ.jpg" },
-    { name: "绫地宁宁",      img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxb2rA8leAKCjbrVltrVbMUtYZaOC2AAIKJAAC7lYIVnSvnnjoJHXAPQQ.jpg" },
-    { name: "雨宫莲",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxeGrA8mS6mHQ9Jqv3hY3vZcwKRNs3AAITJAAC7lYIVnFeZSKX9wX8PQQ.jpg" },
-    { name: "露比·罗丝",     img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbGrA8lR3a6IimygqBBM5PTact3qYAAIHJAAC7lYIVhS2P-4AAcYxdj0E.jpg" },
-    { name: "东彰一",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxaWrA8lAoTKTJoIzNrPz_gCJdgv06AAIEJAAC7lYIViRxduO-LpuKPQQ.jpg" },
-    { name: "柯莱塔·莫塔里", img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxd2rA8mNff_ZiM2NCap1srjQ-X1LNAAISJAAC7lYIVvV9ME1EK8w2PQQ.jpg" },
-    { name: "灶门炭治郎",    img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxdWrA8mGZMKvz56UjNtKRlf4YDUetAAIQJAAC7lYIVr2QfwtZso7kPQQ.jpg" },
-    { name: "沈威",          img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxc2rA8lx4XgknQjVfSfOvuMTd4Iw_AAIOJAAC7lYIVgdJ7tqiCVPOPQQ.jpg" },
-    { name: "小林",          img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxe2rA9SbHhKKMchAGRK5hYhq23qNWAAInJAAC7lYIVmYLkBLE9-xmPQQ.jpg" },
-    { name: "早川秋",        img: "https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcWrA8lqWSOpSpZrk5NRGsgmMUj3bAAIMJAAC7lYIVtaVU5qQ2JA8PQQ.jpg" }
+   1. 角色预览数据（22 人）
+============================================================ */
+var previewData = [
+  { name: '时崎狂三', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxiWrBHptfPQGIJwIsBW7bM8P-3tUaAAK4JAAC7lYIVlhd_xUVaFgiPQQ.jpg' },
+  { name: '泉新一', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcmrA8lvQzPUe1Inf4zGHh2AvkZPhAAINJAAC7lYIViRvlQehk0OPPQQ.jpg' },
+  { name: '鹿目圆', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxeWrA8mYesNjRFrc-jdd9VOzRhWYcAAIUJAAC7lYIVgABrtXZUlvl4T0E.jpg' },
+  { name: '晓美焰', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxdmrA8mIaeT7diJp7HB43JWhiH4xeAAIRJAAC7lYIVrmurp-ihkuwPQQ.jpg' },
+  { name: '啾啾', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxamrA8lFBCTEsvCWhG6uu-wViW8eOAAIFJAAC7lYIVrxiwxuy3dAAAT0E.jpg' },
+  { name: '涅普顿', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbmrA8lbMi7e_ehe1hkt8FEjwBD0gAAIJJAAC7lYIViy3zIPnXREfPQQ.jpg' },
+  { name: '布兰', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxaGrA8k-cARZNt78QY61IZLhwDXeoAAIDJAAC7lYIVjptFQgws1w3PQQ.jpg' },
+  { name: '贝露', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxZ2rA8k339ColDMwsmGVQrYVUlYcfAAICJAAC7lYIVv_bUlu_c_szPQQ.jpg' },
+  { name: '诺瓦露', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcGrA8lhnEvkizB44ILhvsSm4SrE2AAILJAAC7lYIVi4n21Pgtsz1PQQ.jpg' },
+  { name: '星野爱', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxZmrA8ku-1Ctq-wIYs_k5Lye6IyJlAAIBJAAC7lYIVpXYMMmqTtpdPQQ.jpg' },
+  { name: '苗木诚', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxa2rA8lIIAsYcxZAlPYJBGLfTnojaAAIGJAAC7lYIVvAW-ORZnpfpPQQ.jpg' },
+  { name: '常陆茉子', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxemrA9SRuxgL_45lgC3j4WOHJN1jJAAIlJAAC7lYIVrAAAckyTAmrBj0E.jpg' },
+  { name: '明月栞那', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbWrA8lUP6xD5_onkY6VDb27_wCJ1AAIIJAAC7lYIVub8da_2T9vtPQQ.jpg' },
+  { name: '绫地宁宁', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxb2rA8leAKCjbrVltrVbMUtYZaOC2AAIKJAAC7lYIVnSvnnjoJHXAPQQ.jpg' },
+  { name: '雨宫莲', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxeGrA8mS6mHQ9Jqv3hY3vZcwKRNs3AAITJAAC7lYIVnFeZSKX9wX8PQQ.jpg' },
+  { name: '露比·罗丝', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxbGrA8lR3a6IimygqBBM5PTact3qYAAIHJAAC7lYIVhS2P-4AAcYxdj0E.jpg' },
+  { name: '东彰一', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxaWrA8lAoTKTJoIzNrPz_gCJdgv06AAIEJAAC7lYIViRxduO-LpuKPQQ.jpg' },
+  { name: '柯莱塔·莫塔里', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxd2rA8mNff_ZiM2NCap1srjQ-X1LNAAISJAAC7lYIVvV9ME1EK8w2PQQ.jpg' },
+  { name: '灶门炭治郎', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxdWrA8mGZMKvz56UjNtKRlf4YDUetAAIQJAAC7lYIVr2QfwtZso7kPQQ.jpg' },
+  { name: '沈威', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxc2rA8lx4XgknQjVfSfOvuMTd4Iw_AAIOJAAC7lYIVgdJ7tqiCVPOPQQ.jpg' },
+  { name: '小林', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxe2rA9SbHhKKMchAGRK5hYhq23qNWAAInJAAC7lYIVmYLkBLE9-xmPQQ.jpg' },
+  { name: '早川秋', img: 'https://piv.cc.cd/file/BQACAgUAAyEGAASLVN5eAAJxcWrA8lqWSOpSpZrk5NRGsgmMUj3bAAIMJAAC7lYIVtaVU5qQ2JA8PQQ.jpg' }
 ];
+var previewIndex = 0;
 
-var currentIndex = 0;
-var isSwitching = false;
-var ppInited = false;
-
-/* ========== 获取消息内容（环境检测用） ==========
-   GitHub 独立页上没有这些酒馆函数，先判断有没有，没有就返回 null。 */
-function getMessageData() {
-    try {
-        if (typeof getChatMessages !== 'function' || typeof getCurrentMessageId !== 'function') {
-            return null;
-        }
-        var chatMessages = getChatMessages(getCurrentMessageId());
-        if (!chatMessages || chatMessages.length === 0) return null;
-        return chatMessages[0].message;
-    } catch (e) {
-        return null;
-    }
+/* ============================================================
+   2. 视图切换
+============================================================ */
+function showStory() {
+  var welcome = document.getElementById('viewWelcome');
+  var story = document.getElementById('viewStory');
+  if (welcome) { welcome.classList.add('hide'); }
+  if (story) { story.classList.remove('hide'); }
 }
 
-/* ========== 解析欢迎页可覆盖文案 ========== */
-function parseWelcome(messageText) {
-    var data = {};
-    if (!messageText) return data;
-    var tagMatch = messageText.match(/<welcome>([\s\S]*?)<\/welcome>/);
-    if (!tagMatch || !tagMatch[1]) return data;
-    var lines = tagMatch[1].split("\n");
-    lines.forEach(function(line) {
-        var idx = line.indexOf(":");
-        if (idx > -1) {
-            var key = line.slice(0, idx).trim();
-            var val = line.slice(idx + 1).trim();
-            if (key && val) data[key] = val;
-        }
-    });
-    return data;
+function showWelcome() {
+  var welcome = document.getElementById('viewWelcome');
+  var story = document.getElementById('viewStory');
+  if (story) { story.classList.add('hide'); }
+  if (welcome) { welcome.classList.remove('hide'); }
 }
 
-/* ========== 应用欢迎页文案 ========== */
-function applyWelcomeText(data) {
-    var titleEl = document.getElementById("welcomeTitle");
-    var startEl = document.querySelector("#btnStart .label");
-
-    if (data["标题"] && titleEl) {
-        titleEl.textContent = data["标题"];
-    }
-    if (data["按钮"] && startEl) {
-        startEl.textContent = data["按钮"];
-    }
+/* ============================================================
+   3. 角色预览弹层
+============================================================ */
+function openPreview() {
+  var modal = document.getElementById('ppModal');
+  var wrap = modal ? modal.querySelector('.pp-wrap') : null;
+  if (!modal) { return; }
+  modal.classList.add('show');
+  if (wrap) {
+    wrap.classList.remove('fx-switch');
+    void wrap.offsetWidth;
+    wrap.classList.add('fx-boot');
+    setTimeout(function() { wrap.classList.remove('fx-boot'); }, 520);
+  }
+  renderPreview();
 }
 
-/* ========== 开始游戏：纯前端收起 ========== */
-function bindStart() {
-    var wrap = document.getElementById("welcomeWrap");
-    var btn = document.getElementById("btnStart");
-    if (!wrap || !btn) return;
-
-    btn.addEventListener("click", function () {
-        wrap.classList.add("hide");
-        setTimeout(function () {
-            if (wrap && wrap.parentNode) {
-                wrap.style.display = "none";
-            }
-        }, 1000);
-    });
+function closePreview() {
+  var modal = document.getElementById('ppModal');
+  if (modal) { modal.classList.remove('show'); }
 }
 
-/* ========== 预览卡：构建骨架（只建一次） ========== */
-function buildPreviewSkeleton() {
-    var html = '';
-    html += '<span class="pp-close" id="pp-close">✕</span>';
-    html += '<div class="pp-stage" id="pp-stage">';
-    html += '<div class="pp-content" id="pp-content"></div>';
-    html += '<div class="pp-glitch"></div>';
-    html += '</div>';
-    html += '<div class="pp-nav" id="pp-nav">';
-    html += '<span class="pp-btn" data-act="prev">上一页</span>';
-    html += '<span class="pp-page" id="pp-page"></span>';
-    html += '<span class="pp-btn" data-act="next">下一页</span>';
-    html += '</div>';
-    document.getElementById("pp-card").innerHTML = html;
-}
-
-/* ========== 预览卡：只更新内容区与页码 ========== */
-function renderPreviewContent(index) {
-    var total = ROLES.length;
-    if (index < 0) index = total - 1;
-    if (index >= total) index = 0;
-    currentIndex = index;
-
-    var role = ROLES[index] || {};
-    var name = role.name || "未知角色";
-    var img = role.img || "";
-
-    var imgInner = "";
-    if (img) {
-        imgInner = '<img src="' + img + '" alt="" onerror="this.style.display=\'none\'">';
+function renderPreview() {
+  var nameEl = document.getElementById('ppName');
+  var imgBox = document.getElementById('ppImgBox');
+  var pageEl = document.getElementById('ppPage');
+  if (previewData.length === 0) {
+    if (nameEl) { nameEl.textContent = '暂无角色'; }
+    if (imgBox) { imgBox.textContent = '暂无图片'; }
+    if (pageEl) { pageEl.textContent = '0 / 0'; }
+    return;
+  }
+  var cur = previewData[previewIndex] || {};
+  if (nameEl) { nameEl.textContent = cur.name || ''; }
+  if (imgBox) {
+    if (cur.img) {
+      imgBox.innerHTML = '<img src="' + cur.img + '" alt="">';
     } else {
-        imgInner = '<div>图片</div>';
+      imgBox.textContent = '暂无图片';
     }
-
-    var inner = '';
-    inner += '<div class="pp-imgbox">' + imgInner + '</div>';
-    inner += '<div class="pp-name">' + name + '</div>';
-
-    document.getElementById("pp-content").innerHTML = inner;
-    document.getElementById("pp-page").innerHTML = (index + 1) + ' / ' + total;
+  }
+  if (pageEl) {
+    pageEl.textContent = (previewIndex + 1) + ' / ' + previewData.length;
+  }
 }
 
-/* ========== 预览卡：FNAF 式切页 ========== */
-function switchTo(newIndex) {
-    if (isSwitching) return;
-    if (ROLES.length <= 1) return;
-    isSwitching = true;
-
-    var stage = document.getElementById("pp-stage");
-    stage.classList.add("fx-switch");
-
+function previewSwitch(delta) {
+  if (previewData.length === 0) { return; }
+  previewIndex = (previewIndex + delta + previewData.length) % previewData.length;
+  var modal = document.getElementById('ppModal');
+  var wrap = modal ? modal.querySelector('.pp-wrap') : null;
+  if (wrap) {
+    wrap.classList.remove('fx-boot');
+    void wrap.offsetWidth;
+    wrap.classList.add('fx-switch');
     setTimeout(function() {
-        renderPreviewContent(newIndex);
-    }, 230);
-
-    setTimeout(function() {
-        stage.classList.remove("fx-switch");
-        stage.classList.add("fx-boot");
+      wrap.classList.remove('fx-switch');
+      renderPreview();
     }, 470);
-
-    setTimeout(function() {
-        stage.classList.remove("fx-boot");
-        isSwitching = false;
-    }, 990);
+  } else {
+    renderPreview();
+  }
 }
 
-/* ========== 预览卡：翻页（事件委托） ========== */
-function bindPreviewNav() {
-    document.getElementById("pp-nav").addEventListener("click", function(e) {
-        var target = e.target;
-        if (!target || !target.getAttribute) return;
-        var act = target.getAttribute("data-act");
-        if (act === "prev") {
-            switchTo(currentIndex - 1);
-        } else if (act === "next") {
-            switchTo(currentIndex + 1);
-        }
-    });
-}
+/* ============================================================
+   4. 开始第一回合：以玩家身份发一条消息并触发生成
+============================================================ */
+var roundStarted = false;
 
-/* ========== 打开 / 关闭预览弹层 ========== */
-function bindPreviewToggle() {
-    var openBtn = document.getElementById("btnPreview");
-    var modal = document.getElementById("pp-modal");
-
-    if (openBtn && modal) {
-        openBtn.addEventListener("click", function () {
-            if (!ppInited) {
-                buildPreviewSkeleton();
-                renderPreviewContent(0);
-                bindPreviewNav();
-                bindPreviewClose();
-                ppInited = true;
-            }
-            modal.classList.add("show");
-        });
+function startRound() {
+  if (roundStarted) { return; }
+  var btn = document.getElementById('btnRoundStart');
+  var frame = document.getElementById('btnFrame');
+  var content = '一边用家里的材料封窗，一边听广播，看看有什么有用的消息';
+  try {
+    if (typeof triggerSlash === 'function') {
+      triggerSlash('/send ' + content + '|/trigger');
+      roundStarted = true;
+      if (btn) {
+        btn.classList.add('done');
+        btn.textContent = '已开始';
+      }
+      if (frame) { frame.classList.add('done'); }
+    } else {
+      if (btn) {
+        btn.classList.add('done');
+        btn.textContent = '请在酒馆中运行';
+      }
+      console.warn('triggerSlash 不可用：当前环境不在酒馆内。');
     }
+  } catch (error) {
+    console.error('开始第一回合失败:', error);
+  }
 }
 
-/* ========== 关闭弹层（绑定在骨架生成之后） ========== */
-function bindPreviewClose() {
-    var closeBtn = document.getElementById("pp-close");
-    var modal = document.getElementById("pp-modal");
-    if (!closeBtn || !modal) return;
+/* ============================================================
+   5. 初始化（不依赖酒馆运行时也能显示）
+============================================================ */
+(function() {
+  try {
+    renderPreview();
 
-    closeBtn.addEventListener("click", function () {
-        modal.classList.remove("show");
-    });
-}
+    var btnStart = document.getElementById('btnStart');
+    if (btnStart) { btnStart.addEventListener('click', showStory); }
 
-/* ========== 主函数 ========== */
-function init() {
-    try {
-        var messageText = getMessageData();
-        var data = parseWelcome(messageText);
-        applyWelcomeText(data);
-        bindStart();
-        bindPreviewToggle();
-    } catch (error) {
-        console.error("欢迎页错误:", error);
+    var btnReturn = document.getElementById('btnReturn');
+    if (btnReturn) { btnReturn.addEventListener('click', showWelcome); }
+
+    var btnPreview = document.getElementById('btnPreview');
+    if (btnPreview) { btnPreview.addEventListener('click', openPreview); }
+
+    var ppClose = document.getElementById('ppClose');
+    if (ppClose) { ppClose.addEventListener('click', closePreview); }
+
+    var ppModal = document.getElementById('ppModal');
+    if (ppModal) {
+      ppModal.addEventListener('click', function(e) {
+        if (e.target === ppModal) { closePreview(); }
+      });
     }
-}
 
-/* ========== 加载（原生写法，不依赖 jQuery） ========== */
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    setTimeout(init, 0);
-}
+    var ppPrev = document.getElementById('ppPrev');
+    if (ppPrev) { ppPrev.addEventListener('click', function() { previewSwitch(-1); }); }
+
+    var ppNext = document.getElementById('ppNext');
+    if (ppNext) { ppNext.addEventListener('click', function() { previewSwitch(1); }); }
+
+    var btnRoundStart = document.getElementById('btnRoundStart');
+    if (btnRoundStart) { btnRoundStart.addEventListener('click', startRound); }
+
+  } catch (error) {
+    console.error(error);
+  }
+})();
 </script>
-
 </body>
 </html>
 ```

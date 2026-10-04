@@ -94,7 +94,6 @@ body {
   color: #e8e6df;
   pointer-events: none;
 }
-/* 标题字体：荧光绿 */
 .welcome-title-v {
   position: absolute;
   left: clamp(52px, 15%, 120px);
@@ -121,7 +120,6 @@ body {
   }
 }
 
-/* 角色预览：荧光绿光圈 */
 .btn-preview {
   position: absolute;
   right: clamp(12px, 3%, 30px);
@@ -159,7 +157,6 @@ body {
 }
 .btn-preview:hover .label { opacity: 1; }
 
-/* 开始游戏：荧光绿光圈 */
 .btn-start {
   position: absolute;
   left: 50%;
@@ -205,7 +202,6 @@ body {
 }
 .btn-start:hover .label { opacity: 1; }
 
-/* 荧光绿呼吸光晕（两个光圈共用） */
 @keyframes breathGreenStrong {
   0%, 100% {
     box-shadow: 0 0 10px rgba(74,255,125,.55), 0 0 26px rgba(57,255,106,.32), 0 0 0 0 rgba(57,255,106,.30);
@@ -218,7 +214,7 @@ body {
 }
 
 /* ============================================================
-  角色预览弹层
+  角色预览弹层（恢复原大小，不滚动）
 ============================================================ */
 .pp-modal {
   position: absolute;
@@ -273,6 +269,7 @@ body {
 }
 .pp-content,
 .pp-glitch { grid-area: 1 / 1; }
+/* 图片展示区：回到 3 / 4 的紧凑框，contain 完整显示 */
 .pp-imgbox {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -288,7 +285,7 @@ body {
 .pp-imgbox img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .pp-name {
@@ -411,31 +408,32 @@ body {
   justify-content: space-between;
   margin-bottom: 30px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(95,230,230,.22);
+  border-bottom: 1px solid rgba(74,255,125,.28);
 }
 .story-top .k-title {
   font-size: clamp(15px, 3.2vw, 19px);
   letter-spacing: .28em;
-  color: #5fe6e6;
-  text-shadow: 0 0 6px rgba(95,230,230,.55), 0 0 16px rgba(95,230,230,.28);
+  color: #4aff7d;
+  text-shadow: 0 0 6px rgba(74,255,125,.6), 0 0 16px rgba(57,255,106,.32);
   user-select: none;
 }
 .btn-return {
   padding: 6px 16px;
-  border: 1px solid rgba(255,120,120,.55);
+  border: 1px solid rgba(74,255,125,.6);
   border-radius: 999px;
-  background: rgba(40,10,10,.42);
-  color: #ffdada;
+  background: rgba(8,32,16,.45);
+  color: #b9ffcd;
   font-family: inherit;
   font-size: 13px;
   letter-spacing: .1em;
   cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
+  transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .btn-return:hover {
-  background: rgba(64,20,20,.7);
-  border-color: rgba(255,150,150,.9);
-  color: #fff;
+  background: rgba(16,56,28,.72);
+  border-color: rgba(140,255,175,.95);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(74,255,125,.5), 0 0 22px rgba(57,255,106,.28);
 }
 .story-body {
   font-size: clamp(15px, 3vw, 17px);
